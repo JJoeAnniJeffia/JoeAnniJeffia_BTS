@@ -3,105 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BTS Cards</title>
+<title>BTS Profile Cards</title>
 
 <style>
+:root{
+  --gap:10px;
+  --name-top:200px;
+  --list-top:170px;
+  --row-height:250px;
+  --open-right-top:-20px;
+  --max-width:500px;
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:#f5f5f5;
-    padding:20px;
+  background:#fcfcfc;
+  font-family:"Varela Round","Nunito","Calibri",sans-serif;
+  max-width:var(--max-width);
+  margin:0 auto;
+}
+
+a{
+  border-bottom:1px solid #1c826c;
+  color:#1c826c;
+  position:relative;
+  text-decoration:none;
+  top:0;
+  transition:all .5s;
+}
+
+a:hover,
+a:focus{
+  border-bottom-width:2px;
+  outline:none;
+  padding-bottom:2px;
+  top:-3px;
 }
 
 .gif{
-    max-width:800px;
-    margin:auto;
-    text-align:center;
-    margin-bottom:30px;
+  margin:0 auto;
+  max-width:500px;
+  padding:30px;
+  width:100%;
+  text-align:center;
 }
 
 .boxes{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:20px;
-    max-width:1200px;
-    margin:auto;
+  display:grid;
+  grid-template-columns:1fr;
+  grid-template-rows:repeat(9,minmax(var(--row-height),auto));
+  gap:var(--gap);
+  margin:var(--gap) auto;
+  list-style:none;
+  padding:0 20px;
 }
 
-details{
-    background-size:cover;
-    background-position:center;
-    min-height:250px;
-    border-radius:10px;
-    overflow:hidden;
-    position:relative;
-    transition:0.5s;
-    filter:grayscale(100%);
+.boxes details{
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  border-radius:5px;
+  filter:grayscale(100%);
+  transition:.5s;
 }
 
-details:hover{
-    filter:grayscale(40%);
+.boxes details:hover{
+  cursor:pointer;
+  filter:grayscale(70%);
 }
 
-details[open]{
-    filter:grayscale(0%);
-    min-height:500px;
+.boxes details[open]{
+  background-position:top left;
+  filter:grayscale(0%);
+  grid-row:span 2;
+  background-size:auto var(--row-height);
 }
 
-summary{
-    background:black;
-    color:white;
-    padding:12px 20px;
-    display:inline-block;
-    margin:15px;
-    border-radius:5px;
-    cursor:pointer;
-    list-style:none;
+.boxes details[open] summary{
+  font-size:1.5em;
+  transform:rotate(0deg);
+  top:var(--name-top);
 }
 
-summary::-webkit-details-marker{
-    display:none;
+.boxes details[open] summary .realname{
+  opacity:1;
+  max-height:50px;
+  max-width:200px;
+}
+
+.boxes details[open] ul{
+  margin-left:0;
+  margin-top:var(--list-top);
+  padding-top:20px;
+}
+
+.boxes summary{
+  background:black;
+  color:white;
+  display:inline-block;
+  margin:5px 10px;
+  padding:10px 20px;
+  transform:rotate(-15deg);
+  transition:.5s;
+  position:relative;
+  left:-18px;
+  border-radius:3px;
+}
+
+.boxes summary:hover{
+  cursor:pointer;
+}
+
+.boxes summary::-webkit-details-marker{
+  display:none;
 }
 
 .realname{
-    display:block;
-    font-size:12px;
-    opacity:0.8;
+  display:block;
+  font-size:14px;
+  overflow:hidden;
+  opacity:0;
+  max-height:0;
+  max-width:0;
+  transition:.5s;
 }
 
-details ul{
-    display:none;
+.boxes ul{
+  border:1px solid #cfcfcf;
+  border-radius:5px;
+  border-top:0;
+  padding:10px;
+  list-style:none;
 }
 
-details[open] ul{
-    display:block;
-    background:rgba(255,255,255,0.95);
-    margin:20px;
-    padding:20px;
-    border-radius:8px;
-    list-style:none;
-}
-
-details[open] li{
-    padding:10px 0;
-    border-bottom:1px solid #ddd;
+.boxes li{
+  padding:10px 5px;
 }
 
 #bts{
-    background-image:url("https://bts.ibighit.com/images/bts/profile/profile-kv.png");
+  background-image:url("https://bts.ibighit.com/images/bts/profile/profile-kv.png");
 }
 
-#rm{
-    background-image:url("https://bts.ibighit.com/images/bts/profile/member-rm.jpg");
+#v{
+  background-image:url("https://bts.ibighit.com/images/bts/profile/member-v.jpg");
+}
+
+#suga{
+  background-image:url("https://bts.ibighit.com/images/bts/profile/member-suga.jpg");
+}
+
+#jhope{
+  background-image:url("https://bts.ibighit.com/images/bts/profile/member-jhope.jpg");
+}
+
+#jungkook{
+  background-image:url("https://bts.ibighit.com/images/bts/profile/member-jk.jpg");
 }
 
 #jin{
-    background-image:url("https://bts.ibighit.com/images/bts/profile/member-jin.jpg");
+  background-image:url("https://bts.ibighit.com/images/bts/profile/member-jin.jpg");
+}
+
+#jimin{
+  background-image:url("https://bts.ibighit.com/images/bts/profile/member-jimin.jpg");
+}
+
+#rm{
+  background-image:url("https://bts.ibighit.com/images/bts/profile/member-rm.jpg");
+}
+
+@media(min-width:600px){
+  .boxes{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(min-width:900px){
+  :root{
+    --name-top:150px;
+    --list-top:120px;
+    --row-height:200px;
+    --max-width:1200px;
+  }
+
+  .boxes{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    margin-left:-10px;
+  }
+  to{
+    opacity:1;
+    margin-left:0;
+  }
 }
 </style>
 </head>
@@ -109,70 +210,123 @@ details[open] li{
 <body>
 
 <div class="gif">
-    <iframe src="https://giphy.com/embed/l0ErBfFLUMPoq3WbC"
-            width="100%"
-            height="300"
-            frameborder="0"
-            allowfullscreen>
-    </iframe>
+  <iframe src="https://giphy.com/embed/l0ErBfFLUMPoq3WbC"
+          width="100%"
+          height="300"
+          frameborder="0"
+          allowfullscreen>
+  </iframe>
+
+  <p>
+    Get to know
+    <a href="http://bts.ibighit.com" target="_blank">BTS</a>,
+    your Top Social Artist at the Billboard Music Awards.
+  </p>
 </div>
 
 <div class="boxes">
 
-    <details id="bts">
-        <summary>BTS <span class="realname">(Bangtan Boys)</span></summary>
-        <ul>
-            <li>7-member boyband from South Korea, active since 2013</li>
-            <li>Known for powerful performances and choreography</li>
-            <li>Global music phenomenon</li>
-            <li>Won Top Social Artist at Billboard Music Awards</li>
-            <li>Fanbase called ARMY</li>
-        </ul>
-    </details>
+  <details id="bts">
+    <summary>BTS <span class="realname">(Bangtan Boys)</span></summary>
+    <ul>
+      <li>7-member boyband from South Korea, active since 2013</li>
+      <li>Known for powerful performances and choreography</li>
+      <li>Global music phenomenon with millions of fans</li>
+      <li>Won Top Social Artist at Billboard Music Awards</li>
+      <li>Fanbase known as ARMY</li>
+    </ul>
+  </details>
 
-    <details id="rm">
-        <summary>RM <span class="realname">(Kim Namjoon)</span></summary>
-        <ul>
-            <li>Born in 1994</li>
-            <li>Leader and rapper of BTS</li>
-            <li>Speaks English fluently</li>
-            <li>Writes and produces music</li>
-            <li>Known for leadership skills</li>
-        </ul>
-    </details>
+  <details id="rm">
+    <summary>RM <span class="realname">(Kim Namjoon)</span></summary>
+    <ul>
+      <li>Born in 1994</li>
+      <li>Leader and rapper of BTS</li>
+      <li>Fluent English speaker</li>
+      <li>Known for intelligence and leadership</li>
+      <li>Writes and produces music</li>
+    </ul>
+  </details>
 
-    <details id="jin">
-        <summary>JIN <span class="realname">(Kim Seokjin)</span></summary>
-        <ul>
-            <li>Born in 1992</li>
-            <li>Vocalist of BTS</li>
-            <li>Studied acting</li>
-            <li>Known for humor and visuals</li>
-            <li>World Wide Handsome</li>
-        </ul>
-    </details>
+  <details id="jin">
+    <summary>JIN <span class="realname">(Kim Seokjin)</span></summary>
+    <ul>
+      <li>Born in 1992</li>
+      <li>Vocalist of BTS</li>
+      <li>Known worldwide for visuals</li>
+      <li>Studied acting</li>
+      <li>Famous for humor and dad jokes</li>
+    </ul>
+  </details>
+
+  <details id="suga">
+    <summary>SUGA <span class="realname">(Min Yoongi)</span></summary>
+    <ul>
+      <li>Born in 1993</li>
+      <li>Rapper and producer</li>
+      <li>Released Agust D mixtapes</li>
+      <li>Passionate about music production</li>
+      <li>Known for calm personality</li>
+    </ul>
+  </details>
+
+  <details id="jhope">
+    <summary>J-Hope <span class="realname">(Jung Hoseok)</span></summary>
+    <ul>
+      <li>Born in 1994</li>
+      <li>Rapper and dancer</li>
+      <li>Main mood maker of the group</li>
+      <li>Exceptional dance skills</li>
+      <li>Energetic personality</li>
+    </ul>
+  </details>
+
+  <details id="jimin">
+    <summary>Jimin <span class="realname">(Park Jimin)</span></summary>
+    <ul>
+      <li>Born in 1995</li>
+      <li>Vocalist and dancer</li>
+      <li>Studied contemporary dance</li>
+      <li>Known for powerful stage presence</li>
+      <li>Hardworking performer</li>
+    </ul>
+  </details>
+
+  <details id="v">
+    <summary>V <span class="realname">(Kim Taehyung)</span></summary>
+    <ul>
+      <li>Born in 1995</li>
+      <li>Vocalist of BTS</li>
+      <li>Known for unique voice</li>
+      <li>Loves jazz music</li>
+      <li>Fashion icon</li>
+    </ul>
+  </details>
+
+  <details id="jungkook">
+    <summary>Jungkook <span class="realname">(Jeon Jungkook)</span></summary>
+    <ul>
+      <li>Born in 1997</li>
+      <li>Main vocalist</li>
+      <li>Known as the Golden Maknae</li>
+      <li>Excellent singer and dancer</li>
+      <li>Talented in many fields</li>
+    </ul>
+  </details>
 
 </div>
 
 <script>
-document.querySelectorAll("details").forEach(detail => {
+document.querySelectorAll("summary").forEach(summary => {
+    summary.addEventListener("click", function(e){
+        const current = this.parentElement;
 
-    detail.addEventListener("toggle", () => {
-
-        if(detail.open){
-
-            document.querySelectorAll("details").forEach(other => {
-
-                if(other !== detail){
-                    other.removeAttribute("open");
-                }
-
-            });
-
-        }
-
+        document.querySelectorAll("details").forEach(detail => {
+            if(detail !== current){
+                detail.removeAttribute("open");
+            }
+        });
     });
-
 });
 </script>
 
